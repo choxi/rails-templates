@@ -2,17 +2,17 @@ RUBY_VERSION = "2.0.0"
 
 # monkeypatch generate
 def generate(command)
-  run "rvm #{RUBY_VERSION}@#{app_name} do rails generate #{command}"
+  run "rvm #{RUBY_VERSION} do rails generate #{command}"
 end
 
 def rake(command)
-  run "rvm #{RUBY_VERSION}@#{app_name} do rake #{command}"
+  run "rvm #{RUBY_VERSION} do rake #{command}"
 end
 
 # create rvmrc file
-run "rvm use #{RUBY_VERSION}@#{app_name} --create"
-run "rvm #{RUBY_VERSION}@#{app_name} do gem install bundler"
-create_file ".rvmrc", "rvm use #{RUBY_VERSION}@#{app_name}"
+run "rvm use #{RUBY_VERSION}"
+run "rvm #{RUBY_VERSION} do gem install bundler"
+create_file ".rvmrc", "rvm use #{RUBY_VERSION}"
 
 gem "haml-rails"
 gem "angular-rails"
